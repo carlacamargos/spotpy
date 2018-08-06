@@ -486,12 +486,12 @@ def plot_fast_sensitivity(results,like='like1',number_of_sensitiv_pars=10):
     ax.set_xlabel('Model Paramters')
     ax.set_ylabel('Total Sensititivity Index')
     ax.legend()
-    #ax.set_xticklabels(names[1:])
-    ax.set_xticklabels(['0']+parnames)
+    ax.set_xticks(range(len(parnames)))
+    ax.set_xticklabels(parnames)
     ax.plot(np.arange(-1,len(parnames)+1,1),[threshold]*(len(parnames)+2),'r--')
     ax.set_xlim(-0.5,len(parnames)-0.5)
-    fig.savefig('FAST_sensitivity.png',dpi=300)
-    
+    plt.setp( ax.xaxis.get_majorticklabels(), rotation=-45, ha="left")
+    fig.savefig('FAST_sensitivity.png',dpi=300)    
 
 def plot_heatmap_griewank(results,algorithms):
     """Example Plot as seen in the SPOTPY Documentation"""
